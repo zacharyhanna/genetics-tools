@@ -1,6 +1,9 @@
 # genetics-tools
 This is a repository for various tools for processing genetic and genomic data.  
 
+## Contents
+* [DP_means_std_dev_mod.sh](#dp\_means\_std\_dev\_modsh)  
+
 ### DP_means_std_dev_mod.sh
 This is a modification of the DP_means_std_dev.sh script from SPOW-BDOW-introgression-scripts (Hanna et al. 2017).  
 
