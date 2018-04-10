@@ -33,7 +33,7 @@ README.md author: Zachary R. Hanna
 
 Please cite this repository as follows (you should also add which version you used):  
 
-<a href="https://orcid.org/0000-0002-0210-7261" target="orcid.widget" rel="noopener noreferrer" style="vertical-align:top;"><img src="https://orcid.org/sites/default/files/images/orcid_16x16.png" style="width:1em;margin-right:.5em;" alt="ORCID iD icon">Hanna ZR</a>. 2018. genetics-tools. *Zenodo*.
+<a href="https://orcid.org/0000-0002-0210-7261" target="orcid.widget" rel="noopener noreferrer" style="vertical-align:top;"><img src="https://orcid.org/sites/default/files/images/orcid_16x16.png" style="width:1em;margin-right:.5em;" alt="ORCID iD icon">Hanna ZR</a>. 2018. genetics-tools. *Zenodo*. [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1215826.svg)](https://doi.org/10.5281/zenodo.1215826)  
 
 ## References
 <a href="https://orcid.org/0000-0002-0210-7261" target="orcid.widget" rel="noopener noreferrer" style="vertical-align:top;"><img src="https://orcid.org/sites/default/files/images/orcid_16x16.png" style="width:1em;margin-right:.5em;" alt="ORCID iD icon">Hanna ZR</a>, Henderson JB, Wall JD. 2017. SPOW-BDOW-introgression-scripts. Version 1.1.1. *Zenodo*. [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1065056.svg)](https://doi.org/10.5281/zenodo.1065056)  
