@@ -36,7 +36,7 @@ Usage example:
 ```
 $ ./vcf_filter_highDP.sh variants.vcf 1000 >variants_filtered.vcf 
 ```
-The above example would only keep variants with less than 1000 DP coverage. The DP referenced here is the unfiltered depth across all samples at a site [GATK documentation](https://software.broadinstitute.org/gatk/documentation/tooldocs/3.8-0/org_broadinstitute_gatk_tools_walkers_annotator_Coverage.php). VCF headers are OK and will remain in the output file.  
+The above example would only keep variants with less than 1000 DP coverage. The DP referenced here is the unfiltered depth across all samples at a site (see [GATK documentation](https://software.broadinstitute.org/gatk/documentation/tooldocs/3.8-0/org_broadinstitute_gatk_tools_walkers_annotator_Coverage.php) for further details). VCF headers are OK and will remain in the output file.  
 Modifications  
 1) Require maximum DP as command line argument 2.  
 2) Accept 
