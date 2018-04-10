@@ -1,4 +1,6 @@
 #!/bin/bash
+## Usage:
+## ./vcf_filter_highDP.sh variants.vcf maximum_depth
 in_vcf=$1
 maxDP=$2
 awk '/^#/ {print $0; next}
