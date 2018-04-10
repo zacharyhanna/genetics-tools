@@ -3,6 +3,7 @@ This is a repository for various tools for processing genetic and genomic data.
 
 ## Contents
 * [DP_sample_calc.sh](#dp\_sample\_calcsh)  
+* [vcf_filter_highDP.sh](#vcf\_filter\_highdpsh)  
 
 ### DP_sample_calc.sh
 This is a modification of the DP_means_std_dev.sh script from SPOW-BDOW-introgression-scripts version 1.1.1 (Hanna et al. 2017).  
@@ -19,11 +20,25 @@ $ cat variants_dp_means_stdev.txt
 Each space-separated field in the output is "mean coverage,standard deviation".  
 
 Script requirements:  
-GNU Awk - we used GNU Awk version 4.0.1 (Free Software Foundation, 2012)  
+GNU Awk - we used GNU Awk version 4.2.0 (Free Software Foundation, 2017)  
 
 Modifications  
 1) Modified to accept vcf files with headers.  
 2) Assigned maxi=NF.  
+
+### vcf_filter_highDP.sh
+The purpose of this script is to exclude variant sites with coverage greater than a user-specified value. It is a modification of the vcf_dp_filter.sh script from SPOW-BDOW-introgression-scripts version 1.1.1 (Hanna et al. 2017).  
+  
+Script requirements:  
+GNU Awk - we used GNU Awk version 4.2.0 (Free Software Foundation, 2017)  
+
+Usage example:  
+```
+$ ./vcf_filter_highDP.sh variants.vcf >variants_filtered.vcf 
+```
+Modifications  
+1) Require maximum DP as command line argument 2.  
+2) Accept 
 
 #### Authorship
 Code author: <a href="https://orcid.org/0000-0002-0210-7261" target="orcid.widget" rel="noopener noreferrer" style="vertical-align:top;"><img src="https://orcid.org/sites/default/files/images/orcid_16x16.png" style="width:1em;margin-right:.5em," alt="ORCID iD icon">Zachary R. Hanna</a>  
@@ -38,4 +53,4 @@ Please cite this repository as follows (you should also add which version you us
 ## References
 <a href="https://orcid.org/0000-0002-0210-7261" target="orcid.widget" rel="noopener noreferrer" style="vertical-align:top;"><img src="https://orcid.org/sites/default/files/images/orcid_16x16.png" style="width:1em;margin-right:.5em;" alt="ORCID iD icon">Hanna ZR</a>, Henderson JB, Wall JD. 2017. SPOW-BDOW-introgression-scripts. Version 1.1.1. *Zenodo*. [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1065056.svg)](https://doi.org/10.5281/zenodo.1065056)  
   
-Free Software Foundation. 2012. GNU Awk. Version 4.0.1. Available from: https://www.gnu.org/software/gawk/  
+Free Software Foundation 2017. GNU Awk . Version 4.2.0. [Accessed 2018 Mar 15]. Available from: https://www.gnu.org/software/gawk.  
