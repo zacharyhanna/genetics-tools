@@ -2,8 +2,7 @@
 This is a repository for various tools for processing genetic and genomic data.  
 
 ### DP_means_std_dev_mod.sh
-This is a modification of the DP_means_std_dev.sh script from:  
-<a href="https://orcid.org/0000-0002-0210-7261" target="orcid.widget" rel="noopener noreferrer" style="vertical-align:top;"><img src="https://orcid.org/sites/default/files/images/orcid_16x16.png" style="width:1em;margin-right:.5em;" alt="ORCID iD icon">Hanna ZR</a>, Henderson JB, Wall JD. 2017. SPOW-BDOW-introgression-scripts. *Zenodo*. [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1065056.svg)](https://doi.org/10.5281/zenodo.1065056)
+This is a modification of the DP_means_std_dev.sh script from SPOW-BDOW-introgression-scripts (Hanna et al. 2017).  
 
 Usage example:  
 ```
@@ -33,6 +32,6 @@ Please cite this repository as follows (you should also add which version you us
 <a href="https://orcid.org/0000-0002-0210-7261" target="orcid.widget" rel="noopener noreferrer" style="vertical-align:top;"><img src="https://orcid.org/sites/default/files/images/orcid_16x16.png" style="width:1em;margin-right:.5em;" alt="ORCID iD icon">Hanna ZR</a>. 2018. genetics-tools. *Zenodo*.
 
 ## References
-<a href="https://orcid.org/0000-0002-0210-7261" target="orcid.widget" rel="noopener noreferrer" style="vertical-align:top;"><img src="https://orcid.org/sites/default/files/images/orcid_16x16.png" style="width:1em;margin-right:.5em;" alt="ORCID iD icon">Hanna ZR</a>, Henderson JB, Wall JD. 2017. SPOW-BDOW-introgression-scripts. *Zenodo*. [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1065056.svg)](https://doi.org/10.5281/zenodo.1065056) . 
-Free Software Foundation. 2012. GNU Awk. Version 4.0.1. Available from: https://www.gnu.org/software/gawk/.  
-Free Software Foundation. 2012. GNU Awk. Version 4.0.1. Available from: https://www.gnu.org/software/gawk/.  
+<a href="https://orcid.org/0000-0002-0210-7261" target="orcid.widget" rel="noopener noreferrer" style="vertical-align:top;"><img src="https://orcid.org/sites/default/files/images/orcid_16x16.png" style="width:1em;margin-right:.5em;" alt="ORCID iD icon">Hanna ZR</a>, Henderson JB, Wall JD. 2017. SPOW-BDOW-introgression-scripts. *Zenodo*. [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1065056.svg)](https://doi.org/10.5281/zenodo.1065056)  
+  
+Free Software Foundation. 2012. GNU Awk. Version 4.0.1. Available from: https://www.gnu.org/software/gawk/  
