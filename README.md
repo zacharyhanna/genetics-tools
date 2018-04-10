@@ -2,14 +2,14 @@
 This is a repository for various tools for processing genetic and genomic data.  
 
 ## Contents
-* [DP_means_std_dev_mod.sh](#dp\_means\_std\_dev\_modsh)  
+* [DP_sample_calc.sh](#dp\_sample\_calcsh)  
 
-### DP_means_std_dev_mod.sh
+### DP_sample_calc.sh
 This is a modification of the DP_means_std_dev.sh script from SPOW-BDOW-introgression-scripts version 1.1.1 (Hanna et al. 2017).  
 
 Usage example:  
 ```
-$ ./DP_means_std_dev_mod.sh variants.vcf | head -1 >variants_dp_means_stdev.txt  
+$ ./DP_sample_calc.sh variants.vcf | head -1 >variants_dp_means_stdev.txt  
 ```
 Example output:
 ```
