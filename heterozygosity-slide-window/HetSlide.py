@@ -61,7 +61,6 @@ for scaffold in kept_scafs_ls:
             elif ind_call != 0:
                 wind_het_ls[indx] = hets[indx]/ind_call
         hets_dict[scaffold].append([[window[0],window[1]],wind_het_ls])
-#print hets_dict
 
 def write_results(file_out, kept_scafs_ls, hets_dict, samp_ls):
     for sampIdx, samp in enumerate(samp_ls):
@@ -76,7 +75,6 @@ def write_results(file_out, kept_scafs_ls, hets_dict, samp_ls):
                     het_score_val = het_score[1]
                     samp_het_val = str(het_score_val[sampIdx])
                     line_out = scaffold + "\t" + strt_wind + "\t" + end_wind + "\t" + samp_het_val + "\n"
-                    print line_out
                     outfile.write(line_out)
 
 write_results(sys.argv[6], kept_scafs_ls, hets_dict, samp_ls)
