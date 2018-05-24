@@ -71,8 +71,8 @@ def write_results(file_out, kept_scafs_ls, hets_dict, samp_ls):
                 ls_windows_het_scores = hets_dict[scaffold]
                 for HetIdx, het_score in enumerate(ls_windows_het_scores):
                     het_score_wind = het_score[0]
-                    strt_wind = het_score_wind[0]
-                    end_wind = het_score_wind[1]
+                    strt_wind = str(het_score_wind[0])
+                    end_wind = str(het_score_wind[1])
                     het_score_val = het_score[1]
                     samp_het_val = str(het_score_val[sampIdx])
                     line_out = scaffold + "\t" + strt_wind + "\t" + end_wind + "\t" + samp_het_val + "\n"
