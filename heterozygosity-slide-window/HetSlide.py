@@ -52,6 +52,8 @@ for scaffold in kept_scafs_ls:
                     calls[i] += 1.0
                 if GT[:3] == '0/1':
                     hets[i] += 1
+                elif GT[:3] == '1/0':
+                    hets[i] += 1
         wind_het_ls = [0]*len(samp_ls)
         for indx, ind_call in enumerate(calls):
             if ind_call == 0:
