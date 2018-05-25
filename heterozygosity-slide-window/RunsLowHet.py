@@ -126,7 +126,7 @@ percent_str = "{0:.2f}".format(perc_mean_cutoff)
 title_string = "Histogram of window tracts with heterozygosity less than " + percent_str  + " of mean genome-wide heterozygosity for " + sample_pop + " population"
 title_string2 = "\n".join(wrap(title_string, 60))
 plt.title(title_string2)
-plt.xlabel("Genome window tract length (Mbp)")
+plt.xlabel("Genome window tract length (Mb)")
 plt.ylabel("Number of windows within each length bin")
 ax.xaxis.set_major_formatter(myformatter)
 plt.savefig(sys.argv[5], dpi=600, bbox_inches='tight')
