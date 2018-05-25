@@ -1,82 +1,133 @@
 import sys
 import matplotlib
 import matplotlib.pyplot as plt
-from itertools import cycle
+import matplotlib.ticker as ticker
+from textwrap import wrap
 
-def grab_data(file_in):
-    vals_sets = []
-    scaf_indx = []
-    indices = []
-    pi_vals = []
-    myIterator = cycle([1,2])
-    with open(file_in, 'r') as infile:
+# python RunsLowHet.py het_value_file means_file decimal_percentage_mean_cutoff sample_name outfile_name
+def grab_mean_het(mean_file, mean_percentage):
+    mean_dict = {}
+    with open(mean_file, 'r') as meanfile:
+        for line in meanfile:
+            line = line.strip()
+            splitline = line.split()
+            samp = str(splitline[0])
+            samp_mean = float(splitline[1]) * mean_percentage
+            mean_dict[samp] = samp_mean
+    return mean_dict
+
+def grab_data(het_file, het_cutoff):
+    low_het_runs_ls = []
+    with open(het_file, 'r') as infile:
         line_num = 0
-        scaf_indx_val = 0
+        preceed_low_het = 0
+        low_het_start = 0
+        low_het_end = 0
         for line in infile:
             line_num += 1
             line = line.strip()
             splitline = line.split()
-            new_scaf = splitline[0]
+            new_scaf = str(splitline[0])
+            window_start = int(splitline[1])
+            window_end = int(splitline[2])
+            het_val = float(splitline[3])
             if line_num == 1:
-                scaf_indx_val = myIterator.next()
-                indices.append(int(splitline[1]))
-                scaf_indx.append(scaf_indx_val)
-                pi_vals.append(float(splitline[2]))
-                old_scaf = new_scaf
+                if het_val < het_cutoff:
+                    preceed_low_het = 1
+                    low_het_start = window_start
+                    low_het_end = window_end
             elif line_num > 1:
                 if old_scaf == new_scaf:
-                    scaf_indx.append(scaf_indx_val)
-                    indices.append(int(splitline[1]))
-                    pi_vals.append(float(splitline[2]))
+                    if het_val < het_cutoff:
+                        if preceed_low_het == 1:
+                            low_het_end = window_end
+                        elif preceed_low_het == 0:
+                            low_het_start = window_start
+                            low_het_end = window_end
+                            preceed_low_het = 1
+                    else:
+                        if preceed_low_het == 1:
+                            length_low_wind = low_het_end - low_het_start + 1
+                            low_het_runs_ls.append(length_low_wind)
+                            low_het_start = 0
+                            low_het_end = 0
+                        elif preceed_low_het == 0:
+                            pass
+                        preceed_low_het = 0
                 elif old_scaf != new_scaf:
-                    vals_sets.append([indices,pi_vals,scaf_indx_val])
-                    indices = []
-                    pi_vals = []
-                    indices.append(int(splitline[1]))
-                    pi_vals.append(float(splitline[2]))
-                    scaf_indx_val = myIterator.next()
-                    scaf_indx.append(scaf_indx_val)
-                    old_scaf = new_scaf
-    return vals_sets
+                    if preceed_low_het == 1: #take care of window from preceeding scaffold
+                        length_low_wind = low_het_end - low_het_start + 1
+                        low_het_runs_ls.append(length_low_wind)
+                    elif preceed_low_het == 0:
+                        pass
+                    low_het_start = 0 # reset all values for this new scaffold
+                    low_het_end = 0
+                    preceed_low_het = 0
+                    if het_val < het_cutoff:
+                        if preceed_low_het == 1:
+                            low_het_end = window_end
+                        elif preceed_low_het == 0:
+                            low_het_start = window_start
+                            low_het_end = window_end
+                            preceed_low_het = 1
+                    else:
+                        if preceed_low_het == 1:
+                            length_low_wind = low_het_end - low_het_start + 1
+                            low_het_runs_ls.append(length_low_wind)
+                            low_het_start = 0
+                            low_het_end = 0
+                        elif preceed_low_het == 0:
+                            pass
+                        preceed_low_het = 0
+            old_scaf = new_scaf
+    return low_het_runs_ls
 
-MarinDataTable = sys.argv[1]
-Marin_vals = grab_data(MarinDataTable)
+HetDataTable = sys.argv[1]
+mean_file = sys.argv[2]
+perc_mean_cutoff = float(sys.argv[3])
+samp = sys.argv[4]
+meanDict = grab_mean_het(mean_file, perc_mean_cutoff)
+LowHetCutoff = meanDict[samp]
+LowHetRuns = grab_data(HetDataTable, LowHetCutoff)
+print LowHetRuns
 
-colors ={
-"1": "#000000",
-"2": "#0072b2"
+pop_dict = {
+"Sequoia":"Marin",
+"ZRHG103":"Nevada",
+"ZRHG104":"SanDiego",
+"ZRHG125":"Humboldt"
 }
-#for kind in data_dict:
 
-#plt.plot(Marin_vals[1], Marin_vals[2], c=colors[Marin_vals[0]])
-for scafset in Marin_vals:
-    plt.bar(scafset[0], scafset[1], width=1, color=colors[str(scafset[2])])
-    #plt.bar(scafset[0], scafset[1], width=.8, linewidth=.1, color=colors[str(scafset[2])], edgecolor=colors[str(scafset[2])])
-#plt.plot(Marin_vals[1], Marin_vals[2], c=colors[kind])
-#plt.xlim(0,1)
-#plt.ylim(0,7)
-#plt.grid(linestyle='-')
-#plt.ylabel("Effective Population Size ($\mathit{N_e}$)")
-#plt.xlabel("Time (Generations)")
-#plt.xscale('log')
-#plt.yscale('log')
+sample_pop = pop_dict[samp]
 
-#line1 = matplotlib.lines.Line2D(color="blue",label='blue data')
-#point1 = Line2D([0],[0],color="#000000",lw=4,label='Northern Spotted Owl (Marin County)')
-#point2 = Line2D([0],[0],color="#d55e00",lw=4,label='Northern Spotted Owl (Humboldt County)')
-#point3 = Line2D([0],[0],color="#cc79a7",lw=4,label='California Spotted Owl (Nevada County)')
-#point4 = Line2D([0],[0],color="#2b9f78",lw=4,label='California Spotted Owl (San Diego County)')
-#plt.legend(handles, labels)
-#fig, ax = plt.subplots()
-#plt.legend(handles=[point1,point2,point3,point4],framealpha=1)
-locs, labels = plt.xticks()
-locs2 = [indloc for indloc in locs if indloc >= 0]
-locs2 = locs2[:-1]
-print locs2
-scaledVals = [indlocs2 * 100000 for indlocs2 in locs2]
-scaledMb = [int(indVal / 1000000) for indVal in scaledVals]
-plt.xticks(locs2, scaledMb)
-plt.ylabel("Heterozygosity (per variant site)")
-plt.xlabel("Genome position (Mb)")
-plt.savefig(sys.argv[2], dpi=600, bbox_inches='tight')
+def update_xlabels(ax):
+    myxlabels = [format(mylabel, ',.0f') for mylabel in ax.get_xticks()]
+    ax.set_xticklabels(myxlabels)
+
+#def divide_xlabels(ax):
+#    scale_x = 1e6
+#    ticks_x = ticker.FuncFormatter(lambda x, pos: '{0:g}'.format(x/scale_x))
+#    ax.xaxis.set_major_formatter(ticks_x)
+
+def megabases(x, pos):
+    #The two args are the value and tick position
+    return '%1.1f' % (x*1e-6)
+
+myformatter = ticker.FuncFormatter(megabases)
+
+fig, ax = plt.subplots()
+bin1 = range(1,8)
+bin2 = [z+.5 for z in range(1,8)]
+bin3 = bin1 + bin2
+bin3.sort()
+bins = [y*1e6 for y in bin3]
+plt.hist(LowHetRuns,bins)
+percent_str = "{0:.2f}".format(perc_mean_cutoff)
+title_string = "Histogram of window tracts with heterozygosity less than " + percent_str  + " of mean genome-wide heterozygosity for " + sample_pop + " population"
+title_string2 = "\n".join(wrap(title_string, 60))
+plt.title(title_string2)
+plt.xlabel("Genome window tract length (Mbp)")
+plt.ylabel("Number of windows within each length bin")
+ax.xaxis.set_major_formatter(myformatter)
+plt.savefig(sys.argv[5], dpi=600, bbox_inches='tight')
 #plt.show()
