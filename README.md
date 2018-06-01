@@ -2,8 +2,7 @@
 This is a repository for various tools for processing genetic and genomic data.  
 
 ## Subdirectories
-* [CA-spow-scripts](CA-spow-scripts)
-Directory for scripts related to analysis of genomes from California populations of spotted owls.
+* [CA-spow-scripts](CA-spow-scripts) : scripts related to analysis of genomes from California populations of spotted owls
 
 ## Contents
 * [DP_sample_calc.sh](#dp\_sample\_calcsh)  
