@@ -37,6 +37,19 @@ The above example would only keep variants with less than 1,000 DP coverage. The
 Script requirements:  
 GNU Awk - we used GNU Awk version 4.2.0 (Free Software Foundation, 2017)  
 
+### coriell_scraper.py
+
+coriell_scraper.py takes a list of samples corresponding to a subset of those at the Coriell Cell Repositories and retrieves age, gender, cell subtype, transform type, cell type, and ethnicity for each sample. It then outputs these data into a tab-delimited table whose name one specifies as the second argument of the script. I wrote the script for use with python 3.
+
+Usage example:
+```
+python coriell_scraper.py sample_file output_file
+```
+
+Script requirements:
+
+Python 3 along with the following libraries: lxml and requests
+
 #### Authorship
 Code author: <a href="https://orcid.org/0000-0002-0210-7261" target="orcid.widget" rel="noopener noreferrer" style="vertical-align:top;"><img src="https://orcid.org/sites/default/files/images/orcid_16x16.png" style="width:1em;margin-right:.5em," alt="ORCID iD icon">Zachary R. Hanna</a>  
 README.md author: Zachary R. Hanna  
